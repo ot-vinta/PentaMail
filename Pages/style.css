@@ -1,4 +1,4 @@
-<!-- Фон страниц --!>
+<!-- Фон страниц -->
 body {
   position: relative;
   width: 1920px;
@@ -6,6 +6,23 @@ body {
   background: #ADB7BC;
 }
 
+<!-- Заголовок первого уровня: будет использоваться ТОЛЬКО для "Пента.Почта" вверху страницы -->
+h1 {
+  position: absolute;
+  width: 894px;
+  height: 145px;
+  left: 71px;
+  top: 77px;
+  font-family: Work Sans;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  font-size: 96px;
+  color: #000000;
+  text-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+<!-- Фон формы -->
 .formBG {
   position: absolute;
   width: 650px;
@@ -17,6 +34,7 @@ body {
   border-radius: 12px 12px 0px 0px;
 }
 
+<!-- Кнопка -->
 .button {
   position: absolute;
   width: 650px;
@@ -28,6 +46,24 @@ body {
   border-radius: 36px;
 }
 
+<!-- Текст кнопок -->
+p.button {
+  position: absolute;
+  width: 423px;
+  height: 43px;
+  left: 749px;
+  top: 684px;
+  font-family: Work Sans;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  font-size: 36px;
+  text-align: center;
+  color: #000000;
+}
+
+<!-- Кнопка входа/регистрации -->
+<!-- Возможно, стоит реализовать наследование из .button, если это вообще можно -->
 .enterButton {
   position: absolute;
   width: 200px;
@@ -36,8 +72,26 @@ body {
   top: 537px;
   background: #F9AA33;
   border-radius: 36px;
+  p: inherit
 }
 
+<!-- Текст кнопки входа/регистрации -->
+p.enterButton {
+  position: absolute;
+  width: 110px;
+  height: 50px;
+  left: 910px;
+  top: 548px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  font-size: 44px;
+  text-align: center;
+  color: #1B252D;
+}
+
+<!-- Поля ввода текста -->
 .textInput {
   position: absolute;
   width: 374px;
@@ -48,22 +102,17 @@ body {
   border-radius: 36px;
 }
 
+<!-- Текст в формах -->
 .formText {
-position: absolute;
-width: 126px;
-height: 46px;
-left: 705px;
-top: 375px;
-
-font-family: Work Sans;
-font-style: normal;
-font-weight: normal;
-line-height: normal;
-font-size: 36px;
-
-color: #C7CCCE;
-
-
-
-
+  position: absolute;
+  width: 126px;
+  height: 46px;
+  left: 705px;
+  top: 375px;
+  font-family: Work Sans;
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: 36px;
+  color: #C7CCCE;
 }
