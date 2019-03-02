@@ -44,9 +44,12 @@ def find_frequencies(unique_words, s):
 
 
 def delete_useless_words(words, words_freq):
+    keys = []
     for word in words_freq:
         if word not in words:
-            words_freq.pop(word)
+            keys.append(word)
+    for i in keys:
+        words_freq.pop(i)
     return words_freq
 
 
@@ -63,7 +66,7 @@ def feed_forward(x, W, b):
             node_in = x
         else:
             node_in = h[l]
-        z[l+1] = W[l].dot(node_in) + b[l]
+        z[l+1] = (W[l].dot(node_in).T + b[l]).T
         h[l+1] = f(z[l+1])
     return h, z
 
@@ -72,26 +75,31 @@ def predict_y(W, b, X, n_layers):
     m = X.shape[0]
     y = np.zeros((m,))
     for i in range(m):
-        h, z = feed_forward(X[i, :], W, b)
+        h, z = feed_forward(X[i], W, b)
         y[i] = np.argmax(h[n_layers])
     return y
 
 
-def make_args(words_freq):
+def make_args(words_freq, words):
     X = []
-    for i in range(0, len(words_freq)):
-        X.append(list(words_freq[i].values()))
+    for word in words:
+        if word not in words_freq:
+            X.append(0)
+        else:
+            X.append(words_freq[word])
     return X
 
 
 W, b = initialize_weights()
-s = load_message()
+#s = load_message()
+s = 'Привет! Как дела? Что делаешь? А я ничего.'
 s = Normalizer.normalize_data(s)
 words_freq = find_frequencies(find_unique_words(s), s)
 file = open('keys.txt', 'r', encoding='utf-8')
 words = file.readline().split()
 words_freq = delete_useless_words(words, words_freq)
-X = make_args(words_freq)
+X = make_args(words_freq, words)
 X = np.asarray(X)
+X = X.reshape(5610, 1).T
 answer = predict_y(W, b, X, 2)
 print(json.dumps(answer))
