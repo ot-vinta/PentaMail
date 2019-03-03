@@ -7,6 +7,5 @@ $result = shell_exec('python /python/AutoSpamMain.py ' . escapeshellarg(json_enc
 
 // Decode the result
 $resultData = json_decode($result, true);
-
-//Нужно доделать!!!
+echo $resultData;
 ?>
