@@ -91,8 +91,7 @@ def make_args(words_freq, words):
 
 
 W, b = initialize_weights()
-#s = load_message()
-s = 'Привет! Как дела? Что делаешь? А я ничего.'
+s = load_message()
 s = Normalizer.normalize_data(s)
 words_freq = find_frequencies(find_unique_words(s), s)
 file = open('keys.txt', 'r', encoding='utf-8')
