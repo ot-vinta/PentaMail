@@ -124,7 +124,7 @@ def lemmatize(s):
 
 
 def normalize_data(s):
-    s = Translator.translate_string(s)
+    s = .translate_string(s)
     s = s.lower()
     s = delete_special_chars(s)
     s = replace_digits(s)

@@ -1,7 +1,8 @@
+#!/usr/bin/env python
+import sys
 import numpy as np
 import Normalizer
-import sys
-import json
+
 
 
 def initialize_weights():
@@ -10,15 +11,6 @@ def initialize_weights():
     W[1] = np.load('Weights.npy')
     b[1] = np.load('b.npy')
     return W, b
-
-
-def load_message():
-    try:
-        content = json.loads(sys.argv[1])
-    except:
-        print('ERROR')
-        sys.exit(1)
-    return content
 
 
 def find_unique_words(s):
@@ -90,8 +82,8 @@ def make_args(words_freq, words):
     return X
 
 
+s = sys.argv[1]
 W, b = initialize_weights()
-s = load_message()
 s = Normalizer.normalize_data(s)
 words_freq = find_frequencies(find_unique_words(s), s)
 file = open('keys.txt', 'r', encoding='utf-8')
@@ -101,4 +93,4 @@ X = make_args(words_freq, words)
 X = np.asarray(X)
 X = X.reshape(5610, 1).T
 answer = predict_y(W, b, X, 2)
-print(json.dumps(answer))
+print(answer)
