@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i&subset=cyrillic');
+
 <!-- Фон страниц -->
 body {
   position: relative;
   width: 1920px;
   height: 1080px;
   background: #ADB7BC;
+  font-family: 'Open Sans', sans-serif;
 }
 
 <!-- Заголовок первого уровня: будет использоваться ТОЛЬКО для "Пента.Почта" вверху страницы -->
@@ -13,9 +16,8 @@ h1 {
   height: 145px;
   left: 71px;
   top: 77px;
-  font-family: Work Sans;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: normal;
   font-size: 96px;
   color: #000000;
@@ -53,9 +55,8 @@ p.button {
   height: 43px;
   left: 749px;
   top: 684px;
-  font-family: Work Sans;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: normal;
   font-size: 36px;
   text-align: center;
@@ -82,9 +83,8 @@ p.enterButton {
   height: 50px;
   left: 910px;
   top: 548px;
-  font-family: Roboto;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: normal;
   font-size: 44px;
   text-align: center;
@@ -109,7 +109,6 @@ p.enterButton {
   height: 46px;
   left: 705px;
   top: 375px;
-  font-family: Work Sans;
   font-style: normal;
   font-weight: normal;
   line-height: normal;
