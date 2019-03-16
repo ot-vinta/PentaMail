@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i&subset=cyrillic');
 
-<!-- Фон страниц -->
+/* Фон страниц */
 body {
   position: relative;
   width: 1920px;
@@ -9,7 +9,7 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-<!-- Заголовок первого уровня: будет использоваться ТОЛЬКО для "Пента.Почта" вверху страницы -->
+/* Заголовок первого уровня: будет использоваться ТОЛЬКО для "Пента.Почта" вверху страницы */
 h1 {
   position: absolute;
   width: 894px;
@@ -24,7 +24,7 @@ h1 {
   text-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-<!-- Фон формы -->
+/* Фон формы */
 .formBG {
   position: absolute;
   width: 650px;
@@ -36,7 +36,7 @@ h1 {
   border-radius: 12px 12px 0px 0px;
 }
 
-<!-- Кнопка -->
+/* Кнопка */
 .button {
   position: absolute;
   width: 650px;
@@ -48,7 +48,7 @@ h1 {
   border-radius: 36px;
 }
 
-<!-- Текст кнопок -->
+/* Текст кнопок */
 p.button {
   position: absolute;
   width: 423px;
@@ -63,8 +63,8 @@ p.button {
   color: #000000;
 }
 
-<!-- Кнопка входа/регистрации -->
-<!-- Возможно, стоит реализовать наследование из .button, если это вообще можно -->
+/* Кнопка входа/регистрации */
+/* Возможно, стоит реализовать наследование из .button, если это вообще можно */
 .enterButton {
   position: absolute;
   width: 200px;
@@ -76,7 +76,7 @@ p.button {
   p: inherit
 }
 
-<!-- Текст кнопки входа/регистрации -->
+/* Текст кнопки входа/регистрации */
 p.enterButton {
   position: absolute;
   width: 110px;
@@ -91,7 +91,7 @@ p.enterButton {
   color: #1B252D;
 }
 
-<!-- Поля ввода текста -->
+/* Поля ввода текста */
 .textInput {
   position: absolute;
   width: 374px;
@@ -102,7 +102,7 @@ p.enterButton {
   border-radius: 36px;
 }
 
-<!-- Текст в формах -->
+/* Текст в формах */
 .formText {
   position: absolute;
   width: 126px;
