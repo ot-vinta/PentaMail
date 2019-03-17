@@ -42,4 +42,13 @@ class Server
             }
         }
     }
+
+    function createAccount($email, $password, $backupMail, $phone){
+        $open_key = 1;
+        $secret_key = 1;
+        $query = "INSERT INTO Пользователи (Email, Пароль, Резервная_почта, Открытый_ключ, Закрытый_ключ, Уровень_доступа, Телефон) 
+                  VALUES($email, $password, $backupMail, $open_key, $secret_key, 'u', $phone)";
+        $result = mysqli_query($query);
+        return $result;
+    }
 }
