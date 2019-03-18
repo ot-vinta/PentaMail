@@ -4,8 +4,6 @@
  * User: entaro
  * Date: 17.03.19
  * Time: 21:55
- * method=Register&email=apan.kirill@penta.ru&password=admin&backupMail=apan.kirill@yandex.ru&phone=111111
- * method=Enter&email=test@penta.ru&password=admin
  */
 
 spl_autoload_register(function ($class_name) {
