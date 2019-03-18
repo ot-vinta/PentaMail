@@ -13,10 +13,10 @@ class Server
     #constructor
     function __construct()
     {
-        $localhost = "OtVinta";
+        $localhost = "localhost";
         $db = "PentaMailDB";
-        $user = "admin";
-        $password = "admin";
+        $user = "root";
+        $password = "asdVBNjkl465";
 
         $this->link = mysqli_connect($localhost, $user, $password) or
                       trigger_error(mysql_error(),E_USER_ERROR);
@@ -35,10 +35,10 @@ class Server
             $send_query = mysqli_query($this->link, $query);
             $count = mysqli_num_rows($send_query);
             if ($count > 0) {
-                return true;
+                return "true";
             }
             else {
-                return false;
+                return "false";
             }
         }
     }
@@ -47,8 +47,8 @@ class Server
         $open_key = 1;
         $secret_key = 1;
         $query = "INSERT INTO Пользователи (Email, Пароль, Резервная_почта, Открытый_ключ, Закрытый_ключ, Уровень_доступа, Телефон) 
-                  VALUES($email, $password, $backupMail, $open_key, $secret_key, 'u', $phone)";
-        $result = mysqli_query($query);
+                  VALUES('$email', '$password', '$backupMail', '$open_key', '$secret_key', 'u', '$phone')";
+        $result = mysqli_query($this->link, $query);
         return $result;
     }
 }
