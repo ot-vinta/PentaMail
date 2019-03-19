@@ -11,7 +11,7 @@ spl_autoload_register(function ($class_name) {
 });
 
 $server = new Server();
-$method = $_POST['method'];
+$method = $_GET['method'];
 if ($method == "Enter"){
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -19,10 +19,10 @@ if ($method == "Enter"){
     echo $result;
 }
 elseif ($method == "Register"){
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-    $backupMail = $_POST["backupMail"];
-    $phone = $_POST["phone"];
+    $email = $_GET["email"];
+    $password = $_GET["password"];
+    $backupMail = $_GET["backupMail"];
+    $phone = $_GET["phone"];
     $result = $server->createAccount($email, $password, $backupMail, $phone);
     if ($result == true){
 	    echo "true";

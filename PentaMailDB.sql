@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Мар 18 2019 г., 18:02
+-- Время создания: Мар 19 2019 г., 16:47
 -- Версия сервера: 10.1.38-MariaDB
 -- Версия PHP: 7.3.2
 
@@ -16,7 +16,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- База данных: `PentaMailDB`
@@ -30,8 +30,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `Беседы` (
   `Id` int(10) UNSIGNED NOT NULL,
-  `Название` varchar(20) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `Название` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -40,10 +40,10 @@ CREATE TABLE `Беседы` (
 --
 
 CREATE TABLE `Оформление` (
-  `Путь_к_фону` varchar(255) COLLATE utf8_bin NOT NULL,
-  `Шрифт` varchar(35) COLLATE utf8_bin NOT NULL,
-  `Email_пользователя` varchar(35) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `Путь_к_фону` varchar(255) NOT NULL,
+  `Шрифт` varchar(35) NOT NULL,
+  `Email_пользователя` varchar(35) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -53,9 +53,9 @@ CREATE TABLE `Оформление` (
 
 CREATE TABLE `Папки` (
   `Id` int(10) UNSIGNED NOT NULL,
-  `Название` varchar(20) COLLATE utf8_bin NOT NULL,
-  `Email_пользователя` varchar(35) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `Название` varchar(20) NOT NULL,
+  `Email_пользователя` varchar(35) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -64,21 +64,14 @@ CREATE TABLE `Папки` (
 --
 
 CREATE TABLE `Пользователи` (
-  `Email` varchar(35) COLLATE utf8_bin NOT NULL,
-  `Пароль` varchar(30) COLLATE utf8_bin NOT NULL,
-  `Резервная_почта` varchar(35) COLLATE utf8_bin NOT NULL,
+  `Email` varchar(35) NOT NULL,
+  `Пароль` varchar(20) NOT NULL,
+  `Резервная_почта` varchar(35) NOT NULL,
+  `Телефон` varchar(15) NOT NULL,
   `Открытый_ключ` int(10) NOT NULL,
   `Закрытый_ключ` int(10) NOT NULL,
-  `Уровень_доступа` enum('u','a') COLLATE utf8_bin NOT NULL DEFAULT 'u',
-  `Телефон` varchar(15) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Дамп данных таблицы `Пользователи`
---
-
-INSERT INTO `Пользователи` (`Email`, `Пароль`, `Резервная_почта`, `Открытый_ключ`, `Закрытый_ключ`, `Уровень_доступа`, `Телефон`) VALUES
-('admin@penta.ru', 'admin', 'none', 1, 1, 'u', '1111111111');
+  `Уровень_доступа` enum('u','a') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -88,9 +81,9 @@ INSERT INTO `Пользователи` (`Email`, `Пароль`, `Резервн
 
 CREATE TABLE `Пользователи_Беседы` (
   `Id` int(10) UNSIGNED NOT NULL,
-  `Email_пользователя` varchar(35) COLLATE utf8_bin NOT NULL,
+  `Email_пользователя` varchar(35) NOT NULL,
   `Id_беседы` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -100,14 +93,14 @@ CREATE TABLE `Пользователи_Беседы` (
 
 CREATE TABLE `Сообщения` (
   `Id` int(10) UNSIGNED NOT NULL,
-  `Заголовок` varchar(20) COLLATE utf8_bin NOT NULL,
-  `Содержимое` varchar(255) COLLATE utf8_bin NOT NULL,
+  `Заголовок` varchar(20) NOT NULL,
+  `Содержимое` varchar(255) NOT NULL,
   `Дата_отправления` date NOT NULL,
-  `Получатель` varchar(35) COLLATE utf8_bin NOT NULL,
-  `Отправитель` varchar(35) COLLATE utf8_bin NOT NULL,
+  `Получатель` varchar(35) NOT NULL,
+  `Отправитель` varchar(35) NOT NULL,
   `id_папки` int(10) UNSIGNED NOT NULL,
   `ЭЦП` int(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Индексы сохранённых таблиц
@@ -144,7 +137,7 @@ ALTER TABLE `Пользователи`
 --
 ALTER TABLE `Пользователи_Беседы`
   ADD PRIMARY KEY (`Id`),
-  ADD KEY `Email_пользователя` (`Email_пользователя`,`Id_беседы`),
+  ADD KEY `Email_пользователя` (`Email_пользователя`),
   ADD KEY `Id_беседы` (`Id_беседы`);
 
 --
