@@ -57,14 +57,15 @@ class Server
         $folderGotResult = $this->createFolder("Прочитанные", $email);
         $folderSentResult = $this->createFolder("Отправленные", $email);
         $folderSpamResult = $this->createFolder("Спам", $email);
-        $name="Ноыве";
+        $name="Новые";
         $query = "SELECT Id FROM Папки WHERE Email_пользователя = '$email' AND Название = '$name'";
-        $folderId = mysqli_query($this->link, $query);
+        $folderResult = mysqli_query($this->link, $query);
+        $folderId = mysqli_fetch_array($folderResult);
         $welcomeMessageResult = $this->createMessage("Добро пожаловать!",
                                                     "Рады приветствовать вас в нашей Пента.Почте",
                                                             $email,
                                                  "Администрация Пента.Почты",
-                                                            $folderId,
+                                                            $folderId['Id'],
                                                        "1111111");
         return $result;
     }
@@ -78,10 +79,13 @@ class Server
 
     #create new message
     function createMessage($name, $content, $receiverEmail, $senderEmail, $folderId, $EDS){
-        date_default_timezone_set("Etc/GMT-3");
-        $date = date("j.n.Y");
+        echo $name;
+        echo $content;
+        echo $receiverEmail;
+        echo $senderEmail;
+        echo $folderId;
         $query = "INSERT INTO Сообщения (Id, Заголовок, Содержимое, Дата_отправления, Получатель, Отправитель, id_папки, ЭЦП)
-                         VALUES(NULL, '$name', '$content', '$date', '$receiverEmail', '$senderEmail', '$folderId', '$EDS')";
+                         VALUES(NULL, '$name', '$content', NOW(), '$receiverEmail', '$senderEmail', '$folderId', '$EDS')";
         $result = mysqli_query($this->link, $query);
         return $result;
     }
