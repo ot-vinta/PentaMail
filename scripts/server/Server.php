@@ -79,11 +79,6 @@ class Server
 
     #create new message
     function createMessage($name, $content, $receiverEmail, $senderEmail, $folderId, $EDS){
-        echo $name;
-        echo $content;
-        echo $receiverEmail;
-        echo $senderEmail;
-        echo $folderId;
         $query = "INSERT INTO Сообщения (Id, Заголовок, Содержимое, Дата_отправления, Получатель, Отправитель, id_папки, ЭЦП)
                          VALUES(NULL, '$name', '$content', NOW(), '$receiverEmail', '$senderEmail', '$folderId', '$EDS')";
         $result = mysqli_query($this->link, $query);
