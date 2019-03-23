@@ -11,7 +11,7 @@ spl_autoload_register(function ($class_name) {
 });
 
 $server = new Server();
-$method = $_GET['method'];
+$method = $_POST['method'];
 if ($method == "Enter"){
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -19,10 +19,10 @@ if ($method == "Enter"){
     echo $result;
 }
 elseif ($method == "Register"){
-    $email = $_GET["email"];
-    $password = $_GET["password"];
-    $backupMail = $_GET["backupMail"];
-    $phone = $_GET["phone"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $backupMail = $_POST["backupMail"];
+    $phone = $_POST["phone"];
     $result = $server->createAccount($email, $password, $backupMail, $phone);
     if ($result == true){
 	    echo "true";
@@ -30,4 +30,10 @@ elseif ($method == "Register"){
     else{
 	    echo "false";
     }
+}
+elseif ($method == "GetMessages"){
+    $email = $_POST['email'];
+    $folder = $_POST['folder'];
+    $result = $server->getMessages($email, $folder);
+    echo $result['Отправитель']."/$/".$result['Дата_отправления']."/$/".$result['Заголовок']."/$/".$result['Содержимое'];
 }

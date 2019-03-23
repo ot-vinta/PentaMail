@@ -84,4 +84,16 @@ class Server
         $result = mysqli_query($this->link, $query);
         return $result;
     }
+
+    function getMessages($email, $folder){
+        $query = "SELECT Id FROM Папки WHERE Название = '$folder' AND Email_пользователя = '$email'";
+        $folderResult = mysqli_query($this->link, $query);
+        $folders = mysqli_fetch_array($folderResult);
+        $folderId = $folders['Id'];
+
+        $query = "SELECT Отправитель, Дата_отправления, Заголовок, Содержимое FROM Сообщения WHERE id_папки = '$folderId'";
+        $result = mysqli_query($this->link, $query);
+        $array = mysqli_fetch_array($result);
+        return $array;
+    }
 }
