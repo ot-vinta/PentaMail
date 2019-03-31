@@ -93,7 +93,34 @@ class Server
 
         $query = "SELECT Отправитель, Дата_отправления, Заголовок, Содержимое FROM Сообщения WHERE id_папки = '$folderId'";
         $result = mysqli_query($this->link, $query);
-        $array = mysqli_fetch_array($result);
-        return $array;
+        while ($array = mysqli_fetch_array($result)){
+            echo $array['Отправитель']."/$/".$array['Дата_отправления']."/$/".$array['Заголовок']."/$/".$array['Содержимое']."<%$%>";
+        }
+    }
+
+    function sendMessage($title, $content, $sender, $receiver){
+        $findFolderIdQuery = "SELECT Id FROM Папки WHERE Название = 'Новые' AND Email_пользователя = '$receiver'";
+        $folderResult = mysqli_query($this->link, $findFolderIdQuery);
+        $folderArray = mysqli_fetch_array($folderResult);
+        $folder = $folderArray['Id'];
+        $query = "INSERT INTO Сообщения (Id, Заголовок, Содержимое, Дата_отправления, Получатель, Отправитель, id_папки, ЭЦП)
+                  VALUES (NULL, '$title', '$content', NOW(), '$receiver', '$sender', '$folder', '11111111')";
+        $result = mysqli_query($this->link, $query);
+
+        $findFolderIdQuery = "SELECT Id FROM Папки WHERE Название = 'Отправленные' AND Email_пользователя = '$sender'";
+        $folderResult = mysqli_query($this->link, $findFolderIdQuery);
+        $folderArray = mysqli_fetch_array($folderResult);
+        $folder = $folderArray['Id'];
+        $query = "INSERT INTO Сообщения (Id, Заголовок, Содержимое, Дата_отправления, Получатель, Отправитель, id_папки, ЭЦП)
+                  VALUES (NULL, '$title', '$content', NOW(), '$receiver', '$sender', '$folder', '11111111')";
+        $result = mysqli_query($this->link, $query);
+        return $result;
+    }
+
+    function addFolder($title, $email){
+        $query = "INSERT INTO Папки (Id, Название, Email_Пользователя)
+                  VALUES (NULL, '$title', '$email')";
+        $result = mysqli_query($this->link, $query);
+        return $result;
     }
 }
