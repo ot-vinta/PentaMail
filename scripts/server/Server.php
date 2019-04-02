@@ -123,4 +123,12 @@ class Server
         $result = mysqli_query($this->link, $query);
         return $result;
     }
+
+    function getFolders($email){
+        $query = "SELECT Id, Название FROM Папки WHERE Email_пользователя = '$email'";
+        $result = mysqli_query($this->link, $query);
+        while ($array = mysqli_fetch_array($result)){
+            echo $array['Id']."/$/".$array["Название"]."<%$%>";
+        }
+    }
 }

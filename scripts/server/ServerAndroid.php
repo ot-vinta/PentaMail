@@ -51,6 +51,10 @@ switch ($method) {
         $result = $server->addFolder($title, $email);
         echo $result;
         break;
+    case "GetFolders":
+        $email = $_POST['email'];
+        $server->getFolders($email);
+        break;
     default:
         break;
 }
