@@ -4,3 +4,5 @@
 
 $python = "<Путь к интерпретатору python>";
 $result = shell_exec("$python <путь к python-скрипту>");
+
+ONLY FOR WINDOWS!!!
